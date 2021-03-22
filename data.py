@@ -69,4 +69,4 @@ def index():
 if __name__ == "__main__":
     #app.run(host='127.0.0.1', port=8001, debug=True)
     #app.run(debug=False) # running the app
-    app.run() #local host 8080
+    app.run('0.0.0.0',8000) #local host 8080
