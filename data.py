@@ -6,7 +6,7 @@ import os
 
 
 app = Flask(__name__) # initializing a flask app
-
+#model = pickle.load(open('cement.pkl', 'rb'))
 
 
 @app.route('/')
@@ -33,9 +33,21 @@ def index():
             fill_mode=request.form['fill_mode']
             num=int(request.form['num'])
             prefix=request.form['prefix']
+            pd=request.form['pd']
+            fn=request.form['fn']
             x=[rotation_range,width_shift_range,height_shift_range,
             shear_range,zoom_range,horizontal_flip,fill_mode]
             print(x)
+            
+              
+            # Path 
+            path = os.path.join(pd, fn) 
+              
+            # Create the directory 
+            # 'GeeksForGeeks' in 
+            # '/home / User / Documents' 
+            os.mkdir(path) 
+            
             datagen = ImageDataGenerator(
                 rotation_range=x[0],
                 width_shift_range=x[1],
@@ -54,19 +66,21 @@ def index():
             x1=img_to_array(img)#converting image to array
             x1 = x1.reshape((1,) + x1.shape)#changing the dimensions of the image
 
-        
+            print(str(fn))
             i=0
             for batch in datagen.flow(x1, batch_size=1,
-                              save_to_dir='preview', save_prefix=prefix, save_format='jpg'):
+                              save_to_dir= str(fn), save_prefix=prefix, save_format='jpg'):
                 i += 1
                 if i > num:
                     break 
         
-        return ("Data agumentation is done. Check your results in preview folder")
+        return ("Data agumentation is done. Check your results in "+ str(fn) +" folder")
     except:
-        return ("Create a preview folder and try again!!!!!!!!!!")
+        return ("Create a preview folder or fill all the fields and try again!!!!!!!!!!")
 
 if __name__ == "__main__":
+    #app.run('0.0.0.0',8000)
     #app.run(host='127.0.0.1', port=8001, debug=True)
     #app.run(debug=False) # running the app
-    app.run('0.0.0.0',8000) #local host 8080
+     app.run(debug=False) #local host 5000
+     
