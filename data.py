@@ -69,7 +69,7 @@ def index():
             print(str(fn))
             i=0
             for batch in datagen.flow(x1, batch_size=1,
-                              save_to_dir= path, save_prefix=prefix, save_format='jpg'):
+                              save_to_dir= fn, save_prefix=prefix, save_format='jpg'):
                 i += 1
                 if i > num:
                     break 
