@@ -5,6 +5,7 @@ from keras.preprocessing.image import ImageDataGenerator,img_to_array, load_img
 import os
 
 
+
 app = Flask(__name__) # initializing a flask app
 #model = pickle.load(open('cement.pkl', 'rb'))
 
@@ -48,6 +49,8 @@ def index():
             # '/home / User / Documents' 
             os.mkdir(path) 
             
+
+            
             datagen = ImageDataGenerator(
                 rotation_range=x[0],
                 width_shift_range=x[1],
@@ -69,7 +72,7 @@ def index():
             print(str(fn))
             i=0
             for batch in datagen.flow(x1, batch_size=1,
-                              save_to_dir= str(fn), save_prefix=prefix, save_format='jpg'):
+                              save_to_dir= path , save_prefix=prefix, save_format='jpg'):
                 i += 1
                 if i > num:
                     break 
