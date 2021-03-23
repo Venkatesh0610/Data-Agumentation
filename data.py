@@ -46,7 +46,7 @@ def index():
             # Create the directory 
             # 'GeeksForGeeks' in 
             # '/home / User / Documents' 
-            os.mkdir(path) 
+            os.mkdir(path,0o755) 
             
             datagen = ImageDataGenerator(
                 rotation_range=x[0],
