@@ -12,3 +12,4 @@ As when we perform deep learning project the first and for most important thing 
 
 
 
+https://drive.google.com/file/d/1E0MNVzGUHkS0hkBg-ysfKYrpLWkWlAxP/view?usp=sharing
